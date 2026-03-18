@@ -1,274 +1,361 @@
-/* Fondo general */
-body {
-  background-color: #f0f2f5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* --- ESTILOS GENERALES (PARA COMPUTADORA) --- */
+:root {
+  --color-principal: #27ae60;
+  --color-secundario: #2ecc71;
+  --fondo: #f4f6f8;
+  --gris: #7f8c8d;
+  --blanco: #ffffff;
+  --sombra: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--fondo);
+  color: #333;
+  line-height: 1.5;
 }
 
 .contenedor-principal {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 20px;
 }
 
-/* Tarjetas blancas (Formulario e Historial) */
-.contenedor-finanzas, .contenedor-historial {
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+.contenedor-finanzas {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-h1, h2 {
+h1 {
   text-align: center;
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 25px;
+  color: var(--color-principal);
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
-h2 { font-size: 20px; }
+/* Tarjeta de Saldo */
+.tarjeta-saldo {
+  background-color: var(--blanco);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  margin-bottom: 20px;
+}
 
-/* Layout del formulario */
-.campo {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
+.tarjeta-saldo p.monto-saldo {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.saldo-positivo { border-left: 6px solid #2ecc71; }
+.saldo-negativo { border-left: 6px solid #e74c3c; color: #e74c3c; }
+
+/* Gráfico */
+.contenedor-grafico {
+  background-color: var(--blanco);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Formulario */
+.formulario {
+  background-color: var(--blanco);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+}
+
+.campo { margin-bottom: 15px; }
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-principal);
+  box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
 }
 
 .dos-columnas {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
-.dos-columnas .campo {
-  flex: 1; /* Hace que ambas columnas midan lo mismo */
+
+/* Checkboxes */
+.campo-checkbox {
+  margin-bottom: 15px;
 }
 
-.campo label {
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: #555;
-  font-size: 14px;
-}
-
-.campo input, .campo select {
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  transition: border-color 0.3s;
-}
-
-.campo input:focus, .campo select:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-/* Checkbox */
 .campo-checkbox label {
+  font-weight: normal;
   display: flex;
   align-items: center;
-  gap: 10px;
   cursor: pointer;
-  color: #555;
-  font-weight: 600;
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 6px;
 }
 
-/* Botón principal */
+.campo-checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-principal);
+}
+
+/* Botones */
 .boton-guardar {
   width: 100%;
   padding: 12px;
-  background-color: #28a745;
-  color: white;
+  background-color: var(--color-principal);
+  color: var(--blanco);
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+  transition: background 0.2s;
 }
 
 .boton-guardar:hover {
-  background-color: #218838;
+  background-color: #219150;
 }
 
-/* --- ESTILOS DE LA TABLA --- */
-.tabla-finanzas {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 15px;
+/* Historial */
+.contenedor-historial {
+  margin-top: 30px;
 }
 
-.tabla-finanzas th {
-  text-align: left;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #eee;
-  color: #666;
-}
-
-.tabla-finanzas td {
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-  color: #333;
-}
-
-.mayuscula {
-  text-transform: capitalize;
-}
-
-.texto-verde {
-  color: #28a745;
-  font-weight: bold;
-}
-
-.etiqueta-deuda {
-  background-color: #fff3cd;
-  color: #856404;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.etiqueta-ok {
-  background-color: #e2e3e5;
-  color: #383d41;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-/* --- NUEVOS ESTILOS PARA LAS CUOTAS Y LA TABLA --- */
-
-.etiqueta-cuotas {
-  background-color: #e0f7fa;
-  color: #00796b;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.texto-gris {
-  color: #aaa;
-}
-
-/* Evita que la tabla se desborde en pantallas pequeñas */
 .tabla-responsive {
   overflow-x: auto;
 }
 
-/* Animación suave para cuando aparecen los campos ocultos */
-.campo {
-  animation: aparecer 0.3s ease-in-out;
+.tabla-finanzas {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--blanco);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
 }
 
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.tabla-finanzas th,
+.tabla-finanzas td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
 }
-/* --- ESTILOS DEL BOTÓN ELIMINAR --- */
+
+.tabla-finanzas th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: var(--gris);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+/* Etiquetas */
+.etiqueta-cuotas {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.etiqueta-deuda {
+  background-color: #fff3e0;
+  color: #f57c00;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.etiqueta-ok {
+  background-color: #e8f5e9;
+  color: var(--color-principal);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.texto-verde { color: #2ecc71; font-weight: 600; }
+.texto-gris { color: #aaa; }
+.mayuscula { text-transform: uppercase; }
+
 .boton-eliminar {
-  background-color: transparent;
+  background: none;
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  padding: 6px;
-  border-radius: 6px;
-  transition: background-color 0.2s, transform 0.1s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 1rem;
+  color: #e74c3c;
+  opacity: 0.6;
 }
 
 .boton-eliminar:hover {
-  background-color: #ffe6e6; /* Un fondito rojo suave al pasar el mouse */
-  transform: scale(1.1); /* Se agranda un poquito */
+  opacity: 1;
 }
 
-.boton-eliminar:active {
-  transform: scale(0.9); /* Efecto de "click" */
-}
-/* --- ESTILOS DEL SALDO TOTAL --- */
-.tarjeta-saldo {
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom: 25px;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background-color 0.5s ease; /* Transición suave de color */
-}
+/* ==========================================================
+   ¡¡¡AQUÍ EMPIEZA LA MAGIA PARA EL CELULAR!!!
+   ========================================================== */
 
-.saldo-positivo {
-  background-color: #28a745; /* Verde para números positivos */
-}
-
-.saldo-negativo {
-  background-color: rgb(136, 16, 16); /* Rojo para números negativos */
-}
-
-.titulo-saldo {
-  margin: 0 0 5px 0;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  opacity: 0.9;
-}
-
-.monto-saldo {
-  margin: 0;
-  font-size: 38px;
-  font-weight: bold;
-}
-/* --- ESTILOS DEL GRÁFICO --- */
-.contenedor-grafico {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 25px;
-  border: 1px solid #eee;
-}
-
-.contenedor-grafico h3 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #555;
-}
-/* --- ESTILOS DEL FILTRO DE MES --- */
-.contenedor-filtro {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  font-weight: 600;
-  color: #555;
-}
-
-.select-filtro {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  background-color: #22365c;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.select-filtro:focus {
-  border-color: #007bff;
+@media (max-width: 600px) {
+  
+  /* Ajuste de márgenes generales */
+  .contenedor-principal {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Tarjeta de Saldo más compacta */
+  .tarjeta-saldo {
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .tarjeta-saldo p.monto-saldo {
+    font-size: 1.8rem;
+  }
+  
+  /* Reducimos el gráfico para que no se coma la pantalla */
+  .contenedor-grafico {
+    padding: 10px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .contenedor-grafico h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  /* FORMULARIO RESPONSIVO */
+  .formulario {
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  /* Rompemos las columnas: ahora todo va uno debajo del otro */
+  .dos-columnas {
+    display: block;
+  }
+  
+  .dos-columnas .campo {
+    margin-bottom: 12px;
+    width: 100%;
+  }
+  
+  /* Agrandamos los campos de texto para que sean más fáciles de tocar */
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 12px;
+    font-size: 1.1rem; /* Letra un poco más grande */
+  }
+  
+  /* Botón de guardar más grande y cómodo */
+  .boton-guardar {
+    padding: 15px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* HISTORIAL RESPONSIVO (El cambio más importante) */
+  .contenedor-historial h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Eliminamos el borde de la tabla contenedor */
+  .tabla-finanzas {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  /* Ocultamos los encabezados de la tabla (no hay espacio para ellos) */
+  .tabla-finanzas thead {
+    display: none;
+  }
+  
+  /* Convertimos cada fila de la tabla en una "Tarjeta" independiente */
+  .tabla-finanzas tr {
+    display: block;
+    background-color: var(--blanco);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    border: 1px solid #eee;
+  }
+  
+  /* Estilos para cada celda dentro de la tarjeta */
+  .tabla-finanzas td {
+    display: flex; /* Alineación horizontal de 'Etiqueta: Valor' */
+    justify-content: space-between; /* Etiqueta a la izquierda, valor a la derecha */
+    align-items: center;
+    padding: 6px 0; /* Espaciado interno más pequeño */
+    border-bottom: none; /* Quitamos las líneas divisoras viejas */
+    text-align: right; /* El valor se alinea a la derecha */
+    font-size: 0.95rem;
+  }
+  
+  /* TRUCO MÁGICO: Agregamos etiquetas falsas antes del valor usando CSS */
+  .tabla-finanzas td::before {
+    content: attr(data-label); /* Toma el valor de 'data-label' del HTML */
+    font-weight: 600;
+    color: var(--gris);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    float: left; /* Alinea la etiqueta a la izquierda */
+  }
+  
+  /* Ajustes específicos para las celdas de la tarjeta */
+  .tabla-finanzas td.texto-gris { 
+    font-size: 0.85rem; 
+    border-bottom: 1px solid #f0f0f0; /* Línea separadora después de la fecha */
+    padding-bottom: 8px;
+    margin-bottom: 5px;
+  }
+  
+  .tabla-finanzas td.texto-verde, 
+  .tabla-finanzas td:has(span) { 
+    margin-top: 2px;
+  }
+  
+  /* El botón eliminar lo ponemos flotando en la tarjeta */
+  .tabla-finanzas td:last-child {
+    justify-content: flex-end; /* Lo tiramos a la derecha */
+    padding-top: 10px;
+    margin-top: 5px;
+    border-top: 1px solid #f0f0f0;
+  }
 }
