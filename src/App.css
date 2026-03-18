@@ -1,0 +1,274 @@
+/* Fondo general */
+body {
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.contenedor-principal {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tarjetas blancas (Formulario e Historial) */
+.contenedor-finanzas, .contenedor-historial {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+h2 { font-size: 20px; }
+
+/* Layout del formulario */
+.campo {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dos-columnas {
+  display: flex;
+  gap: 15px;
+}
+.dos-columnas .campo {
+  flex: 1; /* Hace que ambas columnas midan lo mismo */
+}
+
+.campo label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+  font-size: 14px;
+}
+
+.campo input, .campo select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.campo input:focus, .campo select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Checkbox */
+.campo-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #555;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+/* Botón principal */
+.boton-guardar {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.boton-guardar:hover {
+  background-color: #218838;
+}
+
+/* --- ESTILOS DE LA TABLA --- */
+.tabla-finanzas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.tabla-finanzas th {
+  text-align: left;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  color: #666;
+}
+
+.tabla-finanzas td {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.mayuscula {
+  text-transform: capitalize;
+}
+
+.texto-verde {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.etiqueta-deuda {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.etiqueta-ok {
+  background-color: #e2e3e5;
+  color: #383d41;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+/* --- NUEVOS ESTILOS PARA LAS CUOTAS Y LA TABLA --- */
+
+.etiqueta-cuotas {
+  background-color: #e0f7fa;
+  color: #00796b;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.texto-gris {
+  color: #aaa;
+}
+
+/* Evita que la tabla se desborde en pantallas pequeñas */
+.tabla-responsive {
+  overflow-x: auto;
+}
+
+/* Animación suave para cuando aparecen los campos ocultos */
+.campo {
+  animation: aparecer 0.3s ease-in-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* --- ESTILOS DEL BOTÓN ELIMINAR --- */
+.boton-eliminar {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boton-eliminar:hover {
+  background-color: #ffe6e6; /* Un fondito rojo suave al pasar el mouse */
+  transform: scale(1.1); /* Se agranda un poquito */
+}
+
+.boton-eliminar:active {
+  transform: scale(0.9); /* Efecto de "click" */
+}
+/* --- ESTILOS DEL SALDO TOTAL --- */
+.tarjeta-saldo {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.5s ease; /* Transición suave de color */
+}
+
+.saldo-positivo {
+  background-color: #28a745; /* Verde para números positivos */
+}
+
+.saldo-negativo {
+  background-color: rgb(136, 16, 16); /* Rojo para números negativos */
+}
+
+.titulo-saldo {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.monto-saldo {
+  margin: 0;
+  font-size: 38px;
+  font-weight: bold;
+}
+/* --- ESTILOS DEL GRÁFICO --- */
+.contenedor-grafico {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+  border: 1px solid #eee;
+}
+
+.contenedor-grafico h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+/* --- ESTILOS DEL FILTRO DE MES --- */
+.contenedor-filtro {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #555;
+}
+
+.select-filtro {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #22365c;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.select-filtro:focus {
+  border-color: #007bff;
+}
